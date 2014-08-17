@@ -15,7 +15,7 @@ int euler1() {
         if((k = 3*i) % 5) s += k;
     }
     end = clock();
-    printf("time: %f\n",(double)(end - begin) / CLOCKS_PER_SEC);
+    printf("euler1 time: %f\n",(double)(end - begin) / CLOCKS_PER_SEC);
     printf("euler1 answer: %d\n",s);
     return s;
 }
