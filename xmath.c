@@ -1,4 +1,3 @@
-
 #include "xmath.h"
 
 ulong64 gcd(ulong64 a, ulong64 b) {

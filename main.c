@@ -1,5 +1,4 @@
 #include "xmath.h"
-
 #include <stdio.h>
 #include <time.h>
 #include <math.h>
@@ -50,25 +49,25 @@ int euler2() {
 //largest prime factor of 600851475143
 ulong64 euler3() {
 
-	clock_t begin, end;
-	begin = clock();
-	ulong64 x,y,d,n, max;
-	n=600851475143;
-	max = 0;
+    clock_t begin, end;
+    begin = clock();
+    ulong64 x,y,d,n, max;
+    n=600851475143;
+    max = 0;
     while(n != 1) {
-    	x=2; y=2; d=1;
-		while(d == 1) {
-			x = (x*x - 1) % n;
-			y = (((y*y - 1) % n)*((y*y - 1) % n) - 1) % n;
-			d = gcd(abs(x-y),n);
-			if(d > max) max = d;
-		}
-		n = n / d;
+        x=2; y=2; d=1;
+	while(d == 1) {
+	    x = (x*x - 1) % n;
+	    y = (((y*y - 1) % n)*((y*y - 1) % n) - 1) % n;
+            d = gcd(abs(x-y),n);
+            if(d > max) max = d;
+        }
+	n = n / d;
     }
     end = clock();
     printf("euler3 time: %f\n",(double)(end - begin) / CLOCKS_PER_SEC);
     printf("euler3 answer: %lld\n", max);
-	return max;
+    return max;
 }
 
 
