@@ -135,11 +135,31 @@ ulong64 euler5() {
     return ans;
 }
 
+//Find the difference between the sum of the squares of the
+//first one hundred natural numbers and the square of the sum.
+//The sum of the squares or S^2(n) has a closed formula namely
+//n(n+1)(2n+1)/6. The sum of the first n natural numbers S(n)
+//also has a closed formula, namely n(n+1)/2. Therefore the
+//difference i.e. S(n)^2-S^2(n) can be written as a compact
+//one liner - (3n^4+2n^3-3n^2-2n)/12
+int euler6() {
+
+    clock_t begin, end;
+    begin = clock();
+    int n = 100;
+    ulong64 ans = (3*n*n*n*n + 2*n*n*n - 3*n*n - 2*n)/12;
+    end = clock();
+    printf("euler6 time: %f\n",(double)(end - begin) / CLOCKS_PER_SEC);
+    printf("euler6 answer: %lld\n",ans);
+    return ans;
+}
+
 int main() {
     euler1();
     euler2();
     euler3();
     euler4();
     euler5();
+    euler6();
     return 0;
 }
