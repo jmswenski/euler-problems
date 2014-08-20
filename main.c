@@ -98,11 +98,48 @@ int euler4() {
     return max;
 }
 
+//find the smallest number that is divisible by all
+//the numbers from 1-20. An upper bound on this number
+//would obviously be factorial(20). We can minimize this
+//by walking over 1..20 and for each composite number
+//divide it by any smaller factors
+ulong64 euler5() {
+
+    clock_t begin, end;
+    begin = clock();
+
+    int factors[19];
+    int i;
+    int f = 2;
+    ulong64 ans = 1;
+    for(i = 0; i < 19; i++) {
+        int j;
+        if(is_prime(f)) {
+            factors[i] = f;
+        }
+        else {
+            int t = f;
+            for(j = 0; j < i; j++) {
+                if(t % factors[j] == 0) {
+                    t = t / factors[j];
+                }
+            }
+            factors[i] = t;
+        }
+        f++;
+        ans *= factors[i];
+    }
+    end = clock();
+    printf("euler5 time: %f\n",(double)(end - begin) / CLOCKS_PER_SEC);
+    printf("euler5 answer: %lld\n",ans);
+    return ans;
+}
 
 int main() {
     euler1();
     euler2();
     euler3();
     euler4();
+    euler5();
     return 0;
 }

@@ -1,5 +1,6 @@
 #include "xmath.h"
 #include <stdlib.h>
+#include <math.h>
 
 ulong64 gcd(ulong64 a, ulong64 b) {
 
@@ -10,6 +11,15 @@ ulong64 gcd(ulong64 a, ulong64 b) {
         b = c;
      }
      return b;
+}
+
+int is_prime(int p) {
+
+    int i;
+    for(i = 1; i <= sqrt(p); i++) {
+        if(p % i == 0) return 0;
+    }
+    return 1;
 }
 
 ulong64 * factor(ulong64 n, int *numFactors) {
