@@ -70,6 +70,11 @@ ulong64 euler3() {
     return max;
 }
 
+//Find the largest 6 digit palindrome that is a product
+//of two 3 digit numbers. Generate palindromes p. Then for each p
+//check if it is divisible by some j in [100,999].
+//if it is, make sure the quotient p/j is also in [100,999]
+//since we're going in decending order, we can quit when we find the first one.
 int euler4() {
 
     clock_t begin, end;
@@ -83,8 +88,8 @@ int euler4() {
         for(j=100; j <= 999; j++) {
             int d = p / j;
             if(p % j == 0 && d <= 999 && d >= 100) {
-	        max = p;
-	    }
+	            max = p;
+            }
         }
     }
     end = clock();
