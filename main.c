@@ -56,13 +56,13 @@ ulong64 euler3() {
     max = 0;
     while(n != 1) {
         x=2; y=2; d=1;
-	    while(d == 1) {
-	        x = (x*x - 1) % n;
-	        y = (((y*y - 1) % n)*((y*y - 1) % n) - 1) % n;
+        while(d == 1) {
+            x = (x*x - 1) % n;
+	    y = (((y*y - 1) % n)*((y*y - 1) % n) - 1) % n;
             d = gcd(abs(x-y),n);
             if(d > max) max = d;
         }
-	    n = n / d;
+	n = n / d;
     }
     end = clock();
     printf("euler3 time: %f\n",(double)(end - begin) / CLOCKS_PER_SEC);
@@ -72,23 +72,25 @@ ulong64 euler3() {
 
 int euler4() {
 
-	clock_t begin, end;
-	begin = clock();
-	int i,max;
-	max = 0;
-	for(i = 999; i >= 100; i--) {
-		int p,j;
-		p = 1100 * i - 990 * floor(i/10.0) - 99 * floor(i/100.0);
-		for(j=100; j <= 999; j++) {
-			if(p % j == 0 && p / j <= 999 && p / j >= 100) {
-			    if(p > max) max = p;
-			}
-		}
-	}
-	end = clock();
-	printf("euler4 time: %f\n",(double)(end - begin) / CLOCKS_PER_SEC);
-	printf("euler4 answer: %d\n",max);
-	return max;
+    clock_t begin, end;
+    begin = clock();
+    int i,max;
+    max = 0;
+    for(i = 999; i >= 100; i--) {
+        int p,j;
+        if(max > 0) break;
+        p = 1100 * i - 990 * floor(i/10.0) - 99 * floor(i/100.0);
+        for(j=100; j <= 999; j++) {
+            int d = p / j;
+            if(p % j == 0 && d <= 999 && d >= 100) {
+	        max = p;
+	    }
+        }
+    }
+    end = clock();
+    printf("euler4 time: %f\n",(double)(end - begin) / CLOCKS_PER_SEC);
+    printf("euler4 answer: %d\n",max);
+    return max;
 }
 
 
