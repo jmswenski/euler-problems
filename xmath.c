@@ -13,6 +13,7 @@ ulong64 gcd(ulong64 a, ulong64 b) {
      return b;
 }
 
+//naive primality check
 int is_prime(int p) {
 
     int i;
@@ -22,6 +23,7 @@ int is_prime(int p) {
     return 1;
 }
 
+//Pollard's rho algorithm
 ulong64 * factor(ulong64 n, int *numFactors) {
 
 	ulong64 x,y,d,size;
@@ -38,7 +40,7 @@ ulong64 * factor(ulong64 n, int *numFactors) {
 	        i++;
 	        if(i == size) {
 	        	size = 2*size;
-	        	realloc(buffer,size);
+	        	buffer = (ulong64*)realloc(buffer,size);
 	        }
 	    }
 		n = n / d;
